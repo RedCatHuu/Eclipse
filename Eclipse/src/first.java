@@ -22,7 +22,17 @@ public class first {
 		month = 2;
 		int day = 29;
 		System.out.println(month + "月" + day + "日に更新。");
+		
+		// 配列の宣言
+		int[][] array = {{1, 2}, {3, 4}, {5, 6}};
 
+		// for文　jsと違うのは宣言部分だけかな。
+		for (int i = 0; i < 3; i++) {
+			int token1 = array[i][0];
+			int token2 = array[i][1];
+			System.out.println(token1 + token2);
+		}
+		
 	}
 
 }
