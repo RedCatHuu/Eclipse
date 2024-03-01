@@ -33,6 +33,14 @@ public class first {
 			System.out.println(token1 + token2);
 		}
 		
+		// if文
+		String s = "Yes";
+		if ( s.equals("Yes")){
+			System.out.println("Yes");
+		}else {
+			System.out.println("No");
+		}
+		
 	}
 
 }
