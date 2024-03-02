@@ -37,6 +37,16 @@ public class first {
 		data3 = 100;
 		System.out.println(data3); // 100.0
 		
+		// 除算の結果
+		double data4 = 10/4;
+		System.out.println(data4); // 2.0 整数同士の除算なので2となり、double型に自動変換され2.0となる。
+		data4 = 10/4.0;
+		System.out.println(data4); // 2.5
+		
+		// キャスト演算子 強制型変換　(変換先の型)キャストの対象
+		int data5 = (int)10.5;
+		System.out.println(data5); // 10
+		
 		// 文字の宣言(シングルクオーテーション)
 		char ch = 'a';
 		System.out.println(ch);
@@ -48,9 +58,22 @@ public class first {
 		String str = "文字列";
 		System.out.println(str);
 		
+		// エスケープ文字
+		System.out.println("123\s456\"789"); 
+		
 		// 論理値
 		boolean result = true;		
 		System.out.println(result);
+		
+		// テキストブロック　改行位置に\nを挿入することでも同じ表示ができる。
+		String str2 = """
+				おはよう
+				こんにちは
+				こんばんわ
+				""";
+		System.out.println(str2);
+		
+		
 
 		// for文　jsと違うのは宣言部分だけかな。
 		for (int i = 0; i < 3; i++) {
