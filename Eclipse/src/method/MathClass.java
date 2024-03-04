@@ -13,9 +13,9 @@ public class MathClass {
 		
 		//乱数
 		double data = Math.random();
-		System.out.println(data);
-		System.out.println(Math.floor(data*10));
-		System.out.println(Math.round(data)*10);
+		System.out.println(data); // 0.9228918207230487
+		System.out.println(Math.floor(data*10)); // 9.0
+		System.out.println(Math.round(data)*10); // 10 long型
 
 	}
 
