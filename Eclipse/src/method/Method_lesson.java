@@ -11,6 +11,11 @@ public class Method_lesson {
 		System.out.println( calc(1, 2) ); // 3
 		
 		System.out.println( bmi(70, 180) ); // 21
+		
+		// 引数が1つ
+		System.out.println(menseki(5.5)); // 95.0
+		// 引数が2つ
+		System.out.println(menseki(5.5, 2)); // 11.0
 	}
 	
 	// messageメソッド
@@ -32,6 +37,16 @@ public class Method_lesson {
 	// bmiを算出
 	public static double bmi(double weight, double height) {
 		return weight / Math.pow((height / 100), 2);
+	}
+	
+	// メソッドのオーバーロード 引数の数や方が違う場合でもメソッドを実行できるようにするため。
+	// 円の面積
+	public static double menseki(double hankei) {
+		return Math.floor( Math.pow(hankei, 2) * Math.PI );
+	}
+	// 四角形の面積
+	public static double menseki(double height, double width) {
+		return height * width;
 	}
 
 }
