@@ -48,7 +48,9 @@ public class records {
 		// 要素が空か判定
 		System.out.println(list.isEmpty()); // true
 		
-		
+		// クラスライブラリを呼び出している。
+		System.out.println( libraryClass.menseki(2,4));
+		System.out.println( libraryClass.bmi(75, 100));
 		
 		
 	}
