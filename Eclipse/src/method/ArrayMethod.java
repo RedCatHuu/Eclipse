@@ -17,7 +17,30 @@ public class ArrayMethod {
 		}
 		System.out.println("合計=" + total); // 合計=55
 		System.out.println("平均=" + total / number.length); // 平均=11
-
+		
+		int[] numbers = {10, 20, 30};
+		calc(numbers);
+		
+		// 可変長引数 同じ型なら複数の値を受け取ることができる。	
+		calculate(10, 20, 30, 40);
+		calculate(10, 20);
+		
+	}
+	
+	public static void calc(int[] num) {
+		int sum = 0;
+		for(int item : num) {
+			sum += item;			
+		}
+		System.out.println(sum);
+	}
+	
+	public static void calculate(int... num) {
+		int sum = 0;
+		for(int item : num) {
+			sum += item;
+		}
+		System.out.println(sum);
 	}
 
 }
