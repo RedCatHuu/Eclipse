@@ -24,6 +24,7 @@ public class switchLesson {
 			case "うおざ" -> fname = "pisces";
 			default -> {
 				System.out.println("入力エラー");
+				
 			}
 		}
 		System.out.println(seiza + "を英訳すると" + fname + "です。");
