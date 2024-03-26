@@ -16,6 +16,15 @@ public class useTax {
 		tax.setKoujo(120000);
 		System.out.println("控除額=" + tax.getKoujo()); // 控除額=120000
 		System.out.println(tax.zeigaku()); // 18000
+		
+		Tax t2 = new Tax(100, "たなか", 280000, 120000);
+		if(tax.equals(t2)) {
+			System.out.println("等しい"); // 等しい
+		}
+		
+		System.out.println(tax.hashCode()); // 131
+		System.out.println(t2.hashCode()); // 131
+		
 	}
 
 }
