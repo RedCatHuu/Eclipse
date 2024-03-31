@@ -21,6 +21,15 @@ public class sandbox {
 		staticJoining.add("banana");
 		staticJoining.add("peach");
 		System.out.println(staticJoining.getCsv()); // apple,banana,peach
+		
+		Id id = new Id(100, "田中");
+		immutableTax itax = new immutableTax(id, 300000, 10000);
+		System.out.println(itax); // immutableTax [id=Id [number=100, name=田中], shotoku=300000, koujo=10000]
+		itax.getId().setNumber(200);
+		// immutableTax自体は不変で、他のidインスタンスを代入することはできないが、idのメンバフィールドをセッターで変更することは可能。
+		System.out.println(itax); // immutableTax [id=Id [number=200, name=田中], shotoku=300000, koujo=10000]
+		
+		
 
 	}
 
