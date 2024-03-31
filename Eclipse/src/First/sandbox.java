@@ -29,6 +29,8 @@ public class sandbox {
 		// immutableTax自体は不変で、他のidインスタンスを代入することはできないが、idのメンバフィールドをセッターで変更することは可能。
 		System.out.println(itax); // immutableTax [id=Id [number=200, name=田中], shotoku=300000, koujo=10000]
 		
+		innerClass ic = new innerClass(102);
+		ic.print(); // number is 102
 		
 
 	}
