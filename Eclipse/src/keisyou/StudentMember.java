@@ -1,10 +1,18 @@
 package keisyou;
 import java.time.LocalDate;
+
 public class StudentMember extends GeneralMember { // 継承の宣言
+	
 	private LocalDate expDate;
+	
 	public StudentMember(long id, String name, LocalDate expDate) {
 		super(id, name);
 		this.expDate = expDate;
+	}
+	
+	@Override
+	public int kai_hi() {
+		return 500;
 	}
 	
 	public boolean isExpired() {
