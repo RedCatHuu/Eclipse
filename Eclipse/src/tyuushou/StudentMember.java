@@ -1,0 +1,28 @@
+package tyuushou;
+import java.time.LocalDate;
+
+public class StudentMember extends Member {
+	private LocalDate expDate;
+	
+	public StudentMember(long id, String name, LocalDate expDate) {
+		super(id, name);
+		this.expDate = expDate;
+	}
+	
+	@Override
+	public int kai_hi() {
+		return isExpired() ? 1000 : 700;
+	}
+	
+	public boolean isExpired() {
+		LocalDate today = LocalDate.now();
+		return today.isAfter(expDate);
+	}
+	public LocalDate getExpDate() {
+		return expDate;
+	}
+	public void setExpDate(LocalDate expDate) {
+		this.expDate = expDate;
+	}
+	
+}
