@@ -28,6 +28,7 @@ public class Sandbox {
 		
 		
 		Tax tax = new Tax(100, "田中", 150);
+//		int zei = tax.zeigaku( gaku -> gaku > 100 ? 0.1 : 0.05); ラムダ式
 		int zei = tax.zeigaku(new Rate1());
 		System.out.println(tax.getName() + "\t" + zei); // 田中	 15
 		
