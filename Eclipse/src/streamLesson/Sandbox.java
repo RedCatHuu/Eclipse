@@ -74,9 +74,15 @@ public class Sandbox {
 		
 		var list6 = List.of("apple", "peach", "watermelon");
 		list.stream()
-			.peek(e -> System.out.print(e + " "))
+			.peek(e -> System.out.print(e + " ")) // 処理の途中で要素を出力。
 			.map(String::toUpperCase)
-			.forEach(e -> System.out.println(e));
+			.forEach(e -> System.out.println(e));		
+		/*
+		orange ORANGE
+		peach PEACH
+		apple APPLE
+		pineapple PINEAPPLE
+		 */
 
 	}
 
