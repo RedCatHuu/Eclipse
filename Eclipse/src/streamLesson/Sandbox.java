@@ -1,6 +1,12 @@
 package streamLesson;
 
+import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
 
 record Department(String name, List<String> employees) {}
 
@@ -83,7 +89,91 @@ public class Sandbox {
 		apple APPLE
 		pineapple PINEAPPLE
 		 */
-
+		
+		
+		// 終端処理
+		var list7 = Book.getBookList();
+		var myList = list7.stream().collect(Collectors.toList()); // 可変リスト
+		var mySet = list7.stream().collect(Collectors.toSet()); // 可変set
+		var myLinkedList = list7.stream()
+				.collect(Collectors.toCollection(LinkedList::new));
+		
+		// 可変Map
+		var list8 = Book.getBookList();
+		var myMap = list8.stream()
+				.limit(3)
+				.collect( Collectors.toMap(Book::title, Book::price) );
+		System.out.println(myMap); // {高瀬舟=500, 三四郎=300, 坊ちゃん=400}
+		myMap.forEach( (k, v) -> System.out.println(k + " " + v) );
+		/*
+		高瀬舟 500
+		三四郎 300
+		坊ちゃん 400
+		 */
+		
+		// 価格が最大の本 optional
+		Optional<Book> book = list8.stream()
+				.max( Comparator.comparing(Book::price) );
+		System.out.println(book); // Optional[Book[title=吾輩は猫である, author=夏目漱石, price=600]]
+		System.out.println( book.orElseGet( Book::new) ); // Book[title=吾輩は猫である, author=夏目漱石, price=600]
+		
+		// sum average max
+		int total2 = list8.stream()
+				.mapToInt(Book::price)
+				.sum();
+		OptionalDouble ave = list8.stream()
+				.mapToInt(Book::price)
+				.average();
+		OptionalInt max = list8.stream()
+				.mapToInt(Book::price)
+				.max();
+		System.out.println( "合計額 = " + total2); // 合計額 = 2000
+		System.out.println( "平均額 = " + ave.orElse(0)); // 平均額 = 400.0
+		System.out.println( "最高額 = "+ max.orElse(0)); // 最高額 = 600
+		
+		//　文字列連結
+		String titles = list8.stream()
+				.map(Book::title)
+				.collect(Collectors.joining(","));
+		System.out.println(titles); // 坊ちゃん,高瀬舟,三四郎,舞姫,吾輩は猫である
+		
+		// 分類 groupingBy
+		var book_author = list8.stream()
+				.collect(Collectors.groupingBy(Book::author));
+		book_author.forEach( (k, v) -> {
+			System.out.println(k);
+			v.forEach(System.out::println);
+		});
+		/*
+		夏目漱石
+		Book[title=坊ちゃん, author=夏目漱石, price=400]
+		Book[title=三四郎, author=夏目漱石, price=300]
+		Book[title=吾輩は猫である, author=夏目漱石, price=600]
+		森鴎外
+		Book[title=高瀬舟, author=森鴎外, price=500]
+		Book[title=舞姫, author=森鴎外, price=200]
+		*/
+		
+		var book_author2 = list8.stream()
+				.collect(Collectors.groupingBy(
+						Book::author,
+						Collectors.mapping(Book::title, Collectors.toList())
+						));
+		System.out.println(book_author2); // {夏目漱石=[坊ちゃん, 三四郎, 吾輩は猫である], 森鴎外=[高瀬舟, 舞姫]}
+		book_author2.forEach( (k, v) -> {
+			System.out.println(k);
+			String titles2 = v.stream().collect(Collectors.joining(","));
+			System.out.println(" " + titles2);
+		});
+		/*
+		夏目漱石
+		 坊ちゃん,三四郎,吾輩は猫である
+		森鴎外
+		 高瀬舟,舞姫
+		 */
+		
+		
+		
 	}
 
 }
